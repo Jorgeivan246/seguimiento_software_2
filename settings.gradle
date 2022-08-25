@@ -1,2 +1,3 @@
 rootProject.name = 'seguimiento_software_2'
-
+include 'negocio'
+include 'web'

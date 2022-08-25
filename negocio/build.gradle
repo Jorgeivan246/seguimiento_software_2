@@ -1,0 +1,5 @@
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'me.minidigger:MiniMessage:2.1.0'
+    runtimeOnly 'mysql:mysql-connector-java'
+}
