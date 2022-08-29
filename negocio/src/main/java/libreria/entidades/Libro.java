@@ -1,5 +1,4 @@
-package entidades;
-
+package libreria.entidades;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -11,18 +10,20 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
 @Getter
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Autor implements Serializable {
+public class Libro implements Serializable {
 
     @Id
-    private int codigoA;
+    private int codigoL;
 
-    @ManyToMany(mappedBy = "autores")
-    private ArrayList<Libro> libros;
+    private String titulo;
 
+    @ManyToMany()
+    private List<Autor> autores;
 }
