@@ -8,6 +8,7 @@
 ### Gradle ###
 # Exclurde Folder List #
 build/
+.gradle/
 
 # PDT-specific
 .buildpath
