@@ -6,11 +6,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -21,12 +22,12 @@ import java.util.List;
 public class Autor implements Serializable {
 
     @Id
-    private int codigoA;
+    private int codA;
+
+    @Column(nullable = false, length = 50)
+    @NotBlank(message = "El nombre del autor no puede estar vacio")
+    private String nombre;
 
     @ManyToMany(mappedBy = "autores")
     private List<Libro> libros;
-
-    @ManyToMany(mappedBy = "autores")
-    private List<Resena> resenas;
-
 }

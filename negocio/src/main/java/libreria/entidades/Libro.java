@@ -1,15 +1,10 @@
 package libreria.entidades;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -17,13 +12,25 @@ import java.util.List;
 @Getter
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@ToString
 public class Libro implements Serializable {
 
     @Id
-    private int codigoL;
+    private int codL;
 
+    @Column(nullable = false, length = 50)
+    @NotBlank(message = "EL titulo del libro no puede estar vacio")
     private String titulo;
 
+    @ToString.Exclude
     @ManyToMany()
     private List<Autor> autores;
+
+    @ToString.Exclude
+    @OneToMany(mappedBy = "libro")
+    private List<Resena> resenas;
+
+    @ToString.Exclude
+    @OneToMany(mappedBy = "libro")
+    private List<Calificacion> calificaciones;
 }
